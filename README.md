@@ -1,8 +1,6 @@
-# 📦 webpack Boilerplate
+# Frameworkless JS Example Webpage
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-
-Sensible webpack 5 boilerplate using Babel, PostCSS and Sass with a hot dev server and an optimized production build.
+Example Project for a University Lecture. Based on the Repository git@github.com:taniarascia/webpack-boilerplate.git. Props to [Tania Rascia](https://www.taniarascia.com)
 
 ## Installation
 
@@ -93,10 +91,10 @@ cd dist && http-server
 - [`prettier`](https://github.com/prettier/prettier) - Dependency for `prettier-webpack-plugin` plugin
 - [`prettier-webpack-plugin`](https://github.com/hawkins/prettier-webpack-plugin) - Prettier configuration for webpack
 
-## Author
+## Fork
 
-- [Tania Rascia](https://www.taniarascia.com)
-
-## License
+Forked from 
+[Tania Rascia](https://www.taniarascia.com) this Repository
+[webpack-boilerplate](https://github.com/taniarascia/webpack-boilerplate)
 
 This project is open source and available under the [MIT License](LICENSE).
