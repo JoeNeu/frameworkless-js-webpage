@@ -1,6 +1,6 @@
 # Frameworkless JS Example Webpage
 
-Example Project for a University Lecture. Based on the Repository git@github.com:taniarascia/webpack-boilerplate.git. Props to [Tania Rascia](https://www.taniarascia.com)
+Example Project for a University Lecture. Based on the Repository [webpack-boilerplate](https://github.com/taniarascia/webpack-boilerplate). Props to [Tania Rascia](https://www.taniarascia.com)
 
 ## Installation
 
