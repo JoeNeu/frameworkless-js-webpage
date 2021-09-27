@@ -8,7 +8,9 @@ const paths = require('./paths')
 
 module.exports = {
   // Where webpack looks to start building the bundle
-  entry: [paths.src + '/index.js'],
+  entry: {
+    main : paths.src + '/index.js',
+  },
 
   // Where webpack outputs the assets and bundles
   output: {
@@ -39,10 +41,22 @@ module.exports = {
     // Generates an HTML file from a template
     // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
     new HtmlWebpackPlugin({
-      title: 'FH Campus - Johannes',
+      title: 'Webpage Home',
       favicon: paths.src + '/images/favicon.png',
-      template: paths.src + '/template.html', // template file
-      filename: 'index.html', // output file
+      template: paths.src + '/index.html',
+      filename: 'index.html',
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Webpage Content',
+      favicon: paths.src + '/images/favicon.png',
+      template: paths.src + '/content.html',
+      filename: 'content.html',
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Webpage About',
+      favicon: paths.src + '/images/favicon.png',
+      template: paths.src + '/about.html',
+      filename: 'about.html',
     }),
 
     // ESLint configuration

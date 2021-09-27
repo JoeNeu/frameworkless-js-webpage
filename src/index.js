@@ -1,18 +1,26 @@
-// Test import of a JavaScript module
-import { example } from '@/js/example'
+import * as text from '@/js/main'
+import * as httpService from '@/js/http'
 
-// Test import of an asset
 import webpackLogo from '@/images/webpack-logo.svg'
-
-// Test import of styles
 import '@/styles/index.scss'
 
-// Appending to the DOM
 const logo = document.createElement('img')
 logo.src = webpackLogo
 
 const heading = document.createElement('h1')
-heading.textContent = example()
+heading.textContent = text.welcomeText()
 
-const app = document.querySelector('#root')
-app.append(logo, heading)
+window.addEventListener('load', () => {
+  if (document.getElementById('download') != null) {
+    const fetchPictures = document.createElement('button')
+    fetchPictures.addEventListener('click', httpService.download)
+    fetchPictures.innerHTML = 'GET EM DOGGOS'
+    const header = document.querySelector('#download')
+    header.append(fetchPictures)
+  }
+
+  if (document.getElementById('welcome') != null) {
+    const app = document.querySelector('#welcome')
+    app.append(logo, heading)
+  }
+})
