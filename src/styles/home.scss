@@ -4,12 +4,13 @@
   justify-content: center;
   flex-direction: column;
   align-self: center;
-  height: 100vh;
   color: $signatureColor;
+  background-color: $backgroundSignature;
+  margin-top: 10%;
 }
 
 #main {
-  background-image: url('https://c.tenor.com/MpXV0vthLNAAAAAC/cute-what.gif');
+  background-image: url('https://i.giphy.com/media/NmGbJwLl7Y4lG/giphy.webp');
   background-size: cover;
   height: 100vh;
   padding: 0;
