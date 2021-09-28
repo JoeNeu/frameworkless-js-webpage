@@ -7,23 +7,16 @@ html {
   line-height: 1.4;
 }
 
+img {
+  float: left;
+  width: 20%;
+  height: 20%;
+  object-fit: cover;
+}
+
 body {
   margin: 0;
   width: 100vw;
-}
-
-#root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  align-self: center;
-  height: 100vh;
-}
-
-#header {
-  height: 200px;
-  border: 3px solid green;
 }
 
 h1 {

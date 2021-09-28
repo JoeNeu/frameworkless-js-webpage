@@ -1,3 +1,10 @@
+function addPictureToList(img) {
+  document.getElementById('picture1').innerHTML = ''
+  document.getElementById('picture2').innerHTML = ''
+
+  document.getElementById('list').appendChild(img)
+}
+
 function download() {
   document.getElementById('picture1').innerHTML = ''
   document.getElementById('picture2').innerHTML = ''
@@ -8,9 +15,15 @@ function download() {
       if (response.status === 'success') {
         const img1 = document.createElement('img')
         img1.src = response.message[0]
+        img1.addEventListener('click', () => {
+          addPictureToList(img1)
+        })
         document.getElementById('picture1').appendChild(img1)
         const img2 = document.createElement('img')
         img2.src = response.message[1]
+        img2.addEventListener('click', () => {
+          addPictureToList(img2)
+        })
         document.getElementById('picture2').appendChild(img2)
       }
     }
