@@ -1,8 +1,22 @@
-function addPictureToList(img) {
+function addPictureToList(_img) {
   document.getElementById('picture1').innerHTML = ''
   document.getElementById('picture2').innerHTML = ''
 
+  const img = document.createElement('img')
+  img.src = _img.src
+  img.id = img.src
+  img.addEventListener('click', () => {
+    document.getElementById(img.id).remove()
+  })
   document.getElementById('list').appendChild(img)
+
+  if (document.getElementById('list').childElementCount === 8) {
+    document.getElementById('downloadButton').remove()
+    const lorem3 = document.createElement('a')
+    lorem3.textContent = 'YOU MADE YOUR CHOICE'
+    const doneText = document.querySelector('#download')
+    doneText.append(lorem3)
+  }
 }
 
 function download() {

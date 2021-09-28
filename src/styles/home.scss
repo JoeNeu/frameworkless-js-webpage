@@ -5,4 +5,13 @@
   flex-direction: column;
   align-self: center;
   height: 100vh;
+  color: $signatureColor;
+}
+
+#main {
+  background-image: url('https://c.tenor.com/MpXV0vthLNAAAAAC/cute-what.gif');
+  background-size: cover;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
 }

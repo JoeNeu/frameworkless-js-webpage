@@ -1,16 +1,21 @@
 .pictureSelect {
-  width: 40%;
-  max-height: 10%;
-  float: left;
-  margin: 3px;
-  padding: 3px;
+  text-align: center;
+  min-height: 150px;
 }
 
 .pictureList {
-  width: 50%;
-  min-height: 120px;
-  float: left;
-  margin: 3px;
-  padding: 3px;
-  border: black;
+  position: absolute;
+  margin-top: 10pc;
+
+  img {
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.space {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: large;
 }
