@@ -47,30 +47,117 @@ window.addEventListener('load', () => {
     fetchPictures.setAttribute('class', 'btn')
     fetchPictures.setAttribute('class', 'btn-warning')
     fetchPictures.setAttribute('class', 'btn-lg')
-    const download = document.querySelector('#download')
-    download.append(fetchPictures)
+
+    document.querySelector('#download').append(fetchPictures)
   }
 
   if (document.getElementById('welcome') != null) {
     const heading = document.createElement('h1')
     heading.textContent = text.welcome()
 
-    const welcome = document.querySelector('#welcome')
-    welcome.append(heading)
+    document.querySelector('#welcome').append(heading)
   }
 
   if (document.getElementById('about') != null) {
-    const lorem = document.createElement('div')
-    lorem.textContent = text.about()
-    lorem.setAttribute('class', 'ml-1')
-    const lorem2 = document.createElement('div')
-    lorem2.textContent = text.about()
-    lorem2.setAttribute('class', 'ml-1')
-    const lorem3 = document.createElement('div')
-    lorem3.textContent = text.about()
-    lorem3.setAttribute('class', 'ml-1')
+    if (window.location.search !== '') {
+      const selection = document.createElement('div')
+      selection.innerHTML = 'Your previous query was: ' + window.location.search
+      const prevSelection = document.querySelector('#prevSelection')
+      prevSelection.append(selection)
+    }
 
-    const about = document.querySelector('#about')
-    about.append(lorem, lorem2, lorem3)
+    document
+      .querySelector('#about')
+      .append(text.getAbout(), text.getAbout(), text.getAbout())
+
+    const fName = document.getElementById('fName')
+    fName.onkeyup = () => {
+      if (fName.value.length >= 8) {
+        fName.removeAttribute('class')
+        fName.setAttribute('class', 'valid')
+      } else {
+        fName.removeAttribute('class')
+        fName.setAttribute('class', 'invalid')
+      }
+    }
+
+    const fNumber = document.getElementById('fNumber')
+    fNumber.onkeyup = () => {
+      if (/^\d+$/.test(fNumber.value)) {
+        fNumber.removeAttribute('class')
+        fNumber.setAttribute('class', 'valid')
+      } else {
+        fNumber.removeAttribute('class')
+        fNumber.setAttribute('class', 'invalid')
+      }
+    }
+
+    const fPw = document.getElementById('fPw')
+    fPw.onkeyup = () => {
+      if (
+        /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(fPw.value)
+      ) {
+        fPw.removeAttribute('class')
+        fPw.setAttribute('class', 'valid')
+      } else {
+        fPw.removeAttribute('class')
+        fPw.setAttribute('class', 'invalid')
+      }
+    }
+
+    const fEmail = document.getElementById('fEmail')
+    fEmail.onkeyup = () => {
+      if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(fEmail.value)) {
+        fEmail.removeAttribute('class')
+        fEmail.setAttribute('class', 'valid')
+      } else {
+        fEmail.removeAttribute('class')
+        fEmail.setAttribute('class', 'invalid')
+      }
+    }
+
+    // WTF pls excuse this function.
+    // It was late and i had to go see some friends. Got never refactored
+    const form = document.getElementById('aboutForm')
+    form.setAttribute('action', path + '/about.html')
+    form.onsubmit = () => {
+      if (fName.value.length >= 8) {
+        fName.removeAttribute('class')
+        fName.setAttribute('class', 'valid')
+        if (/^\d+$/.test(fNumber.value)) {
+          fNumber.removeAttribute('class')
+          fNumber.setAttribute('class', 'valid')
+          if (
+            // eslint-disable-next-line max-len
+            /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(
+              fPw.value
+            )
+          ) {
+            fPw.removeAttribute('class')
+            fPw.setAttribute('class', 'valid')
+            // eslint-disable-next-line max-len
+            if (
+              /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(fEmail.value)
+            ) {
+              fEmail.removeAttribute('class')
+              fEmail.setAttribute('class', 'valid')
+              return true
+            }
+            fEmail.removeAttribute('class')
+            fEmail.setAttribute('class', 'invalid')
+          } else {
+            fPw.removeAttribute('class')
+            fPw.setAttribute('class', 'invalid')
+          }
+        } else {
+          fNumber.removeAttribute('class')
+          fNumber.setAttribute('class', 'invalid')
+        }
+      } else {
+        fName.removeAttribute('class')
+        fName.setAttribute('class', 'invalid')
+      }
+      return false
+    }
   }
 })

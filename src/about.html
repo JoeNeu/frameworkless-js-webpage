@@ -12,6 +12,28 @@
     <div id="topnav"></div>
     <div class="container space">
       <div id="about"></div>
+
+      <h3 id="prevSelection"></h3>
+      <div>
+        <form id="aboutForm" method="get">
+          <label for="fName">Name: (Minimum 8 characters)</label><br />
+          <input type="text" id="fName" name="fName" /><br />
+
+          <label for="fNumber">Number: (Only numbers)</label><br />
+          <input type="text" id="fNumber" name="fNumber" /><br /><br />
+
+          <label for="fPw"
+            >Password: (6 to 16 characters, at least one number and one special
+            character)</label
+          ><br />
+          <input type="password" id="fPw" name="fPw" /><br /><br />
+
+          <label for="fEmail">Email: (Valid email regex)</label><br />
+          <input type="text" id="fEmail" name="fEmail" /><br /><br />
+
+          <input type="submit" value="Submit" id="submit" />
+        </form>
+      </div>
     </div>
   </body>
 </html>

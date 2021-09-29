@@ -1,6 +1,6 @@
 const welcome = () =>
   `The ULTIMATE dog Website!!! Click on 'Dog Selection' to 
-  select your dog crew! If you have questions, fill out a 
+  select your dog crew! If you have questions fill out the 
   form in the 'About' section.`
 
 const about = () =>
@@ -12,8 +12,16 @@ const info = () =>
         have to chose. Your selection is displayed below. You can remove your
         previously selected dog by clicking on the Picture. Once you reach 8
         sweet doggos you can not undo your selection.`
+
+function getAbout() {
+  const lorem = document.createElement('div')
+  lorem.textContent = about()
+  lorem.setAttribute('class', 'ml-1')
+  return lorem
+}
 module.exports = {
   welcome,
   about,
   info,
+  getAbout,
 }

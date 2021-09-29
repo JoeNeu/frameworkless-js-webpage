@@ -23,6 +23,7 @@ function download() {
   document.getElementById('picture1').innerHTML = ''
   document.getElementById('picture2').innerHTML = ''
   const xhttp = new XMLHttpRequest()
+  // eslint-disable-next-line func-names
   xhttp.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
       const response = JSON.parse(this.responseText)

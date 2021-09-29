@@ -10,12 +10,18 @@ Clone this repo and npm install.
 npm i
 ```
 
+Webpack setup configurations are in the config folder.
+```bash
+cd config
+```
+EsLint, Babel and PostCss configurations are in the root folder.
+
 ## Usage
 
 ### Development server
 
 ```bash
-npm start
+npm run start
 ```
 
 You can view the development server at `localhost:8080`.
@@ -44,6 +50,7 @@ cd docs && http-server
 - [Babel](https://babeljs.io/)
 - [Sass](https://sass-lang.com/)
 - [PostCSS](https://postcss.org/)
+- [Bootstrap](https://getbootstrap.com/)
 
 ## Fork
 
