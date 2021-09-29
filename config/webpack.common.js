@@ -6,6 +6,35 @@ const ESLintPlugin = require('eslint-webpack-plugin')
 
 const paths = require('./paths')
 
+const htmlPages = [
+  // Generates an HTML file from a template
+  // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
+  new HtmlWebpackPlugin({
+    title: 'Webpage Home',
+    favicon: paths.src + '/images/favicon.png',
+    template: paths.src + '/home.html',
+    filename: 'index.html',
+    url: (process.env.NODE_ENV === 'production')
+      ? 'frameworkless-js-webpage' : ''
+  }),
+  new HtmlWebpackPlugin({
+    title: 'Webpage Content',
+    favicon: paths.src + '/images/favicon.png',
+    template: paths.src + '/content.html',
+    filename: 'content.html',
+    url: (process.env.NODE_ENV === 'production')
+      ? 'frameworkless-js-webpage' : ''
+  }),
+  new HtmlWebpackPlugin({
+    title: 'Webpage About',
+    favicon: paths.src + '/images/favicon.png',
+    template: paths.src + '/about.html',
+    filename: 'about.html',
+    url: (process.env.NODE_ENV === 'production')
+      ? 'frameworkless-js-webpage' : ''
+  })
+]
+
 module.exports = {
   // Where webpack looks to start building the bundle
   entry: {
@@ -38,36 +67,14 @@ module.exports = {
       ],
     }),
 
-    // Generates an HTML file from a template
-    // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
-    new HtmlWebpackPlugin({
-      title: 'Webpage Home',
-      favicon: paths.src + '/images/favicon.png',
-      template: paths.src + '/home.html',
-      filename: 'index.html',
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Webpage Content',
-      favicon: paths.src + '/images/favicon.png',
-      template: paths.src + '/content.html',
-      filename: 'content.html',
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Webpage About',
-      favicon: paths.src + '/images/favicon.png',
-      template: paths.src + '/about.html',
-      filename: 'about.html',
-    }),
-
     // ESLint configuration
     new ESLintPlugin({
       files: ['.', 'src', 'config'],
       formatter: 'table',
     }),
 
-    // Prettier configuration
     new PrettierPlugin(),
-  ],
+  ].concat(htmlPages),
 
   // Determine how modules within the project are treated
   module: {

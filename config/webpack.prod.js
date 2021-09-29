@@ -10,7 +10,7 @@ module.exports = merge(common, {
   devtool: false,
   output: {
     path: paths.build,
-    publicPath: './',
+    publicPath: './frameworkless-js-webpage/',
     filename: 'js/[name].[contenthash].bundle.js',
   },
   module: {
