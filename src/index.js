@@ -3,8 +3,43 @@ import * as httpService from '@/js/http'
 
 import '@/styles/index.scss'
 
+let path = ''
+
+if (process.env.NODE_ENV === 'production') {
+  path = '/frameworkless-js-webpage'
+}
+
 window.addEventListener('load', () => {
+  if (document.getElementById('topnav') != null) {
+    const nav = document.getElementById('topnav')
+
+    const home = document.createElement('a')
+    home.href = path + '/'
+    home.innerHTML = 'Home'
+    if (document.getElementById('welcome') != null) {
+      home.setAttribute('class', 'active')
+    }
+
+    const dog = document.createElement('a')
+    dog.href = path + '/content.html'
+    dog.innerHTML = 'Dog Selection'
+    if (document.getElementById('download') != null) {
+      dog.setAttribute('class', 'active')
+    }
+
+    const about = document.createElement('a')
+    about.href = path + '/about.html'
+    about.innerHTML = 'About'
+    if (document.getElementById('about') != null) {
+      about.setAttribute('class', 'active')
+    }
+
+    nav.append(home, dog, about)
+  }
+
   if (document.getElementById('download') != null) {
+    const id = document.getElementById('info')
+    id.innerHTML = text.info()
     const fetchPictures = document.createElement('button')
     fetchPictures.addEventListener('click', httpService.download)
     fetchPictures.innerHTML = 'GET EM DOGGOS'
