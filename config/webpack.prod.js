@@ -10,7 +10,7 @@ module.exports = merge(common, {
   devtool: false,
   output: {
     path: paths.build,
-    publicPath: './frameworkless-js-webpage/',
+    publicPath: './',
     filename: 'js/[name].[contenthash].bundle.js',
   },
   module: {
@@ -34,6 +34,7 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
+
     // Extracts CSS into separate files
     new MiniCssExtractPlugin({
       filename: 'styles/[name].[contenthash].css',
