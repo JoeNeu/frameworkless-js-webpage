@@ -40,7 +40,7 @@ module.exports = merge(common, {
         use: {
           loader: WebpackObfuscator.loader,
           options: {
-            rotateStringArray: true
+            rotateStringArray: false
           }
         }
       }
