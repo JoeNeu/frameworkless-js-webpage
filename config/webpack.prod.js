@@ -1,6 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const WebpackObfuscator = require('webpack-obfuscator')
+// const WebpackObfuscator = require('webpack-obfuscator')
 
 const { merge } = require('webpack-merge')
 
@@ -33,27 +33,28 @@ module.exports = merge(common, {
           'sass-loader',
         ],
       },
-      {
-        test: /\.js$/,
-        exclude: [],
-        enforce: 'post',
-        use: {
-          loader: WebpackObfuscator.loader,
-          options: {
-            rotateStringArray: false
-          }
-        }
-      }
+      // {
+      //   test: /\.js$/,
+      //   exclude: [],
+      //   enforce: 'post',
+      //   use: {
+      //     loader: WebpackObfuscator.loader,
+      //     options: {
+      //       rotateStringArray: false
+      //     }
+      //   }
+      // }
     ],
   },
   plugins: [
+    // Extracts CSS into separate files
     new MiniCssExtractPlugin({
       filename: 'styles/[name].[contenthash].css',
       chunkFilename: '[id].css',
     }),
-    new WebpackObfuscator ({
-      rotateStringArray: true
-    }, [])
+  //   new WebpackObfuscator ({
+  //     rotateStringArray: true
+  //   }, [])
   ],
   optimization: {
     minimize: true,
