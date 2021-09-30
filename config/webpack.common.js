@@ -13,19 +13,25 @@ const htmlPages = [
     title: 'Webpage Home',
     favicon: paths.src + '/images/favicon.png',
     template: paths.src + '/home.html',
-    filename: 'index.html'
+    filename: 'index.html',
+    url: (process.env.NODE_ENV === 'production')
+      ? 'frameworkless-js-webpage' : ''
   }),
   new HtmlWebpackPlugin({
     title: 'Webpage Content',
     favicon: paths.src + '/images/favicon.png',
     template: paths.src + '/content.html',
-    filename: 'content.html'
+    filename: 'content.html',
+    url: (process.env.NODE_ENV === 'production')
+      ? 'frameworkless-js-webpage' : ''
   }),
   new HtmlWebpackPlugin({
     title: 'Webpage About',
     favicon: paths.src + '/images/favicon.png',
     template: paths.src + '/about.html',
-    filename: 'about.html'
+    filename: 'about.html',
+    url: (process.env.NODE_ENV === 'production')
+      ? 'frameworkless-js-webpage' : ''
   })
 ]
 
