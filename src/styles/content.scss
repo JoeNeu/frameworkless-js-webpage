@@ -4,13 +4,17 @@
 }
 
 .pictureList {
-  position: absolute;
-  margin-top: 10pc;
-
   img {
     margin-left: 10px;
     margin-bottom: 10px;
   }
+}
+
+#selection {
+  position: absolute;
+  margin-top: 5pc;
+  text-align: center;
+  border: black;
 }
 
 .space {

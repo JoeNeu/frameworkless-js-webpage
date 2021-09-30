@@ -10,6 +10,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 window.addEventListener('load', () => {
+  // Navigation Section
   if (document.getElementById('topnav') != null) {
     const nav = document.getElementById('topnav')
 
@@ -37,12 +38,13 @@ window.addEventListener('load', () => {
     nav.append(home, dog, about)
   }
 
+  // Content Section
   if (document.getElementById('download') != null) {
     const id = document.getElementById('info')
     id.innerHTML = text.info()
     const fetchPictures = document.createElement('button')
     fetchPictures.addEventListener('click', httpService.download)
-    fetchPictures.innerHTML = 'GET EM DOGGOS'
+    fetchPictures.innerHTML = 'GET MORE DOGGOS'
     fetchPictures.id = 'downloadButton'
     fetchPictures.setAttribute('class', 'btn')
     fetchPictures.setAttribute('class', 'btn-warning')
@@ -51,6 +53,7 @@ window.addEventListener('load', () => {
     document.querySelector('#download').append(fetchPictures)
   }
 
+  // Home Section
   if (document.getElementById('welcome') != null) {
     const heading = document.createElement('h1')
     heading.textContent = text.welcome()
@@ -58,6 +61,7 @@ window.addEventListener('load', () => {
     document.querySelector('#welcome').append(heading)
   }
 
+  // About Section
   if (document.getElementById('about') != null) {
     if (window.location.search !== '') {
       const selection = document.createElement('div')
@@ -66,9 +70,7 @@ window.addEventListener('load', () => {
       prevSelection.append(selection)
     }
 
-    document
-      .querySelector('#about')
-      .append(text.getAbout(), text.getAbout(), text.getAbout())
+    document.querySelector('#about').append(text.getAbout())
 
     const fName = document.getElementById('fName')
     fName.onkeyup = () => {
@@ -116,48 +118,46 @@ window.addEventListener('load', () => {
       }
     }
 
-    // WTF pls excuse this function.
-    // It was late and i had to go see some friends. Got never refactored
     const form = document.getElementById('aboutForm')
     form.setAttribute('action', path + '/about.html')
     form.onsubmit = () => {
+      let success = 0
       if (fName.value.length >= 8) {
         fName.removeAttribute('class')
         fName.setAttribute('class', 'valid')
-        if (/^\d+$/.test(fNumber.value)) {
-          fNumber.removeAttribute('class')
-          fNumber.setAttribute('class', 'valid')
-          if (
-            // eslint-disable-next-line max-len
-            /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(
-              fPw.value
-            )
-          ) {
-            fPw.removeAttribute('class')
-            fPw.setAttribute('class', 'valid')
-            // eslint-disable-next-line max-len
-            if (
-              /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(fEmail.value)
-            ) {
-              fEmail.removeAttribute('class')
-              fEmail.setAttribute('class', 'valid')
-              return true
-            }
-            fEmail.removeAttribute('class')
-            fEmail.setAttribute('class', 'invalid')
-          } else {
-            fPw.removeAttribute('class')
-            fPw.setAttribute('class', 'invalid')
-          }
-        } else {
-          fNumber.removeAttribute('class')
-          fNumber.setAttribute('class', 'invalid')
-        }
+        success += 1
       } else {
         fName.removeAttribute('class')
         fName.setAttribute('class', 'invalid')
       }
-      return false
+      if (/^\d+$/.test(fNumber.value)) {
+        fNumber.removeAttribute('class')
+        fNumber.setAttribute('class', 'valid')
+        success += 1
+      } else {
+        fNumber.removeAttribute('class')
+        fNumber.setAttribute('class', 'invalid')
+      }
+      if (
+        // eslint-disable-next-line max-len
+        /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(fPw.value)
+      ) {
+        fPw.removeAttribute('class')
+        fPw.setAttribute('class', 'valid')
+        success += 1
+      } else {
+        fPw.removeAttribute('class')
+        fPw.setAttribute('class', 'invalid')
+      }
+      if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(fEmail.value)) {
+        fEmail.removeAttribute('class')
+        fEmail.setAttribute('class', 'valid')
+        success += 1
+      } else {
+        fEmail.removeAttribute('class')
+        fEmail.setAttribute('class', 'invalid')
+      }
+      return success === 4
     }
   }
 })

@@ -1,3 +1,8 @@
+function updateCounter() {
+  document.getElementById('count').innerHTML =
+    'Selection: ' + document.getElementById('list').childElementCount
+}
+
 function addPictureToList(_img) {
   document.getElementById('picture1').innerHTML = ''
   document.getElementById('picture2').innerHTML = ''
@@ -7,6 +12,7 @@ function addPictureToList(_img) {
   img.id = img.src
   img.addEventListener('click', () => {
     document.getElementById(img.id).remove()
+    updateCounter()
   })
   document.getElementById('list').appendChild(img)
 
@@ -17,6 +23,7 @@ function addPictureToList(_img) {
     const doneText = document.querySelector('#download')
     doneText.append(lorem3)
   }
+  updateCounter()
 }
 
 function download() {
