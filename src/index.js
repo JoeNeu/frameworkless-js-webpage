@@ -3,33 +3,27 @@ import * as httpService from '@/js/http'
 
 import '@/styles/index.scss'
 
-let path = ''
-
-if (process.env.NODE_ENV === 'production') {
-  path = '/frameworkless-js-webpage'
-}
-
 window.addEventListener('load', () => {
   // Navigation Section
   if (document.getElementById('topnav') != null) {
     const nav = document.getElementById('topnav')
 
     const home = document.createElement('a')
-    home.href = path + '/'
+    home.href = 'index.html'
     home.innerHTML = 'Home'
     if (document.getElementById('welcome') != null) {
       home.setAttribute('class', 'active')
     }
 
     const dog = document.createElement('a')
-    dog.href = path + '/content.html'
+    dog.href = 'content.html'
     dog.innerHTML = 'Dog Selection'
     if (document.getElementById('download') != null) {
       dog.setAttribute('class', 'active')
     }
 
     const about = document.createElement('a')
-    about.href = path + '/about.html'
+    about.href = 'about.html'
     about.innerHTML = 'About'
     if (document.getElementById('about') != null) {
       about.setAttribute('class', 'active')
@@ -119,7 +113,7 @@ window.addEventListener('load', () => {
     }
 
     const form = document.getElementById('aboutForm')
-    form.setAttribute('action', path + '/about.html')
+    form.setAttribute('action', 'about.html')
     form.onsubmit = () => {
       let success = 0
       if (fName.value.length >= 8) {
